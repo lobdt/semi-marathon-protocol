@@ -1,8 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Semi de Barcelone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
+.session.today{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.todaytag{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;background:var(--accent);color:var(--surface);padding:2px 7px;border-radius:99px;margin-left:6px}
+html{scroll-padding-top:12px}
+
 :root{
   --bg:#f5f4f0;--surface:#ffffff;--ink:#1c1f24;--muted:#5d636b;--line:#e0ded7;
   --accent:#1f5f8b;--accent-soft:#e3edf5;
@@ -89,6 +98,8 @@ ul.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 @media (max-width:440px){.row{grid-template-columns:1fr;gap:0}.row span:first-child{margin-top:4px}}
 @media (prefers-reduced-motion:reduce){.fill{transition:none}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
   <header class="head">
@@ -186,7 +197,7 @@ function Q(day,tag,title,pace,dur,km,mid,note,gel){return {day:day,tag:tag,q:1,t
 
 var weeks=[
 {ph:"Phase 1 · Refaire la base",n:0,label:"Aujourd'hui · reprise",start:"2026-10-11",dates:"Dim 11 oct",note:"Neuf jours sans courir depuis le 2 octobre : une sortie facile un peu plus longue que la dernière.",s:[
-  E('Dim 11 oct',6,"Coude d'Alina : couvrir la plaie, et ne courir que si le bras ne fait pas mal en balançant. Marcher une minute si besoin, sans culpabiliser.")]},
+  E('Dim 11 oct',6,"Marcher une minute si besoin, sans culpabiliser.")]},
 {ph:"",n:1,start:"2026-10-12",dates:"12 – 18 oct",note:"Que du facile. Le corps se réhabitue au rythme de 3 sorties par semaine.",s:[
   E('Mar 13 oct',5),E('Ven 16 oct',5),L('Dim 18 oct',8)]},
 {ph:"",n:2,start:"2026-10-19",dates:"19 – 25 oct",note:"Premières accélérations courtes, juste pour réveiller les jambes.",s:[
@@ -272,6 +283,12 @@ var openIdx=-1;
 weeks.forEach(function(w,i){var st=new Date(w.start+'T00:00:00');var en=new Date(st);en.setDate(st.getDate()+7);if(openIdx<0&&today<en)openIdx=i;});
 if(openIdx<0)openIdx=weeks.length-1;
 
+var MO={oct:9,nov:10,'déc':11,janv:0,'févr':1};
+function sdate(day){var p=day.split(' ');var mo=MO[p[2]];return new Date(mo>=9?2026:2027,mo,parseInt(p[1],10),12);}
+var target=null;
+weeks.forEach(function(w,i){w.s.forEach(function(s){if(!target&&sdate(s.day)>=today)target={w:i,id:s.id,isToday:sdate(s.day).getTime()===today.getTime()};});});
+if(target)openIdx=target.w;
+
 var plan=document.getElementById('plan');
 weeks.forEach(function(w,i){
   if(w.ph){var p=document.createElement('div');p.className='phase';p.textContent=w.ph;plan.appendChild(p);}
@@ -284,10 +301,10 @@ weeks.forEach(function(w,i){
   var body=document.createElement('div');body.className='wbody';
   if(w.note){var pn=document.createElement('p');pn.className='wnote';pn.textContent=w.note;body.appendChild(pn);}
   w.s.forEach(function(s){
-    var a=document.createElement('article');a.className='session'+(saved[s.id]?' done':'');
+    var a=document.createElement('article');a.className='session'+(saved[s.id]?' done':'')+(target&&target.id===s.id?' today':'');a.id='card-'+s.id;
     var cls=s.r?'tag r':(s.q?'tag q':'tag');
     a.innerHTML='<input type="checkbox" id="'+s.id+'" aria-label="'+s.day+' : '+s.title+'"'+(saved[s.id]?' checked':'')+'>'+
-      '<div class="s-main"><div class="s-top"><span class="day">'+s.day+'</span><span class="'+cls+'">'+s.tag+'</span></div>'+
+      '<div class="s-main"><div class="s-top"><span class="day">'+s.day+'</span>'+(target&&target.id===s.id?'<span class="todaytag">'+(target.isToday?"Aujourd'hui":'Prochaine')+'</span>':'')+'<span class="'+cls+'">'+s.tag+'</span></div>'+
       '<h3 class="s-title">'+s.title+'</h3>'+
       '<div class="chips"><span class="chip"><i>Allure</i>'+s.pace+'</span><span class="chip"><i>Durée</i>'+s.dur+'</span><span class="chip"><i>Distance</i>'+s.dist+'</span><span class="chip"><i>Total</i>'+s.total+'</span></div>'+
       (s.note?'<p class="note">'+s.note+'</p>':'')+
@@ -302,4 +319,7 @@ weeks.forEach(function(w,i){
   d.appendChild(body);plan.appendChild(d);
 });
 update();
+if(target){setTimeout(function(){var el=document.getElementById('card-'+target.id);if(el)el.scrollIntoView({block:'start'});},150);}
 </script>
+</body>
+</html>
