@@ -1,216 +1,305 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan de reprise — Semi-marathon 25 octobre 2026</title>
+<title>Semi de Barcelone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
-  :root{--green:#1a9e6e;--green-light:#e6f7f1;--green-mid:#5DCAA5;--amber:#d97706;--amber-light:#fef3c7;--red:#dc2626;--red-light:#fee2e2;--blue:#2563eb;--blue-light:#eff6ff;--gray:#6b7280;--gray-light:#f3f4f6;--border:#e5e7eb;--text:#111827;--text-muted:#6b7280;--bg:#fafafa;--white:#ffffff;--radius:10px;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;padding:1.5rem 1rem;max-width:780px;margin:0 auto;}
-  .header{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem;}
-  .header h1{font-size:18px;font-weight:600;margin-bottom:4px;}
-  .header p{font-size:12.5px;color:var(--text-muted);line-height:1.6;}
-  .warn-box{background:#fff7ed;border:1px solid #fdba74;border-radius:var(--radius);padding:1rem 1.5rem;margin-bottom:1rem;}
-  .warn-box h3{font-size:12px;font-weight:600;color:#9a3412;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;}
-  .warn-box p{font-size:12.5px;color:#7c2d12;line-height:1.7;}
-  .progress-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
-  .progress-bar-wrap{flex:1;height:8px;background:var(--gray-light);border-radius:999px;overflow:hidden;}
-  .progress-bar-fill{height:100%;background:var(--green);border-radius:999px;transition:width 0.4s ease;}
-  .progress-label{font-size:12px;color:var(--text-muted);white-space:nowrap;font-family:'DM Mono',monospace;}
-  .legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem;}
-  .leg{font-size:11px;font-weight:500;padding:3px 8px;border-radius:999px;}
-  .leg-easy{background:var(--green-light);color:#065f46;}
-  .leg-tempo{background:var(--amber-light);color:#92400e;}
-  .leg-frac{background:var(--red-light);color:#991b1b;}
-  .leg-long{background:var(--blue-light);color:#1e40af;}
-  .leg-activ{background:#fce7f3;color:#9d174d;}
-  .leg-race{background:#ede9fe;color:#4c1d95;}
-  .phase-title{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);padding:3px 8px;background:var(--gray-light);border-radius:4px;display:inline-block;margin:1.25rem 0 .6rem;}
-  .week-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);}
-  .week-hdr{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;user-select:none;transition:background .15s;}
-  .week-hdr:hover{background:var(--gray-light);}
-  .week-title{font-size:13.5px;font-weight:500;flex:1;}
-  .week-dates{font-size:11.5px;color:var(--text-muted);white-space:nowrap;font-family:'DM Mono',monospace;}
-  .week-count{font-size:11.5px;color:var(--text-muted);font-family:'DM Mono',monospace;white-space:nowrap;}
-  .week-chev{font-size:10px;color:var(--text-muted);transition:transform .2s;}
-  .week-chev.open{transform:rotate(90deg);}
-  .week-done .week-title{color:var(--green);}
-  .week-body{display:none;border-top:1px solid var(--border);}
-  .week-body.open{display:block;}
-  .session{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);}
-  .session:last-child{border-bottom:none;}
-  .session input[type=checkbox]{margin-top:3px;accent-color:var(--green);width:15px;height:15px;cursor:pointer;flex-shrink:0;}
-  .s-body{flex:1;min-width:0;}
-  .s-top{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap;}
-  .s-day{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);font-family:'DM Mono',monospace;}
-  .badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:999px;}
-  .badge-easy{background:var(--green-light);color:#065f46;}
-  .badge-tempo{background:var(--amber-light);color:#92400e;}
-  .badge-frac{background:var(--red-light);color:#991b1b;}
-  .badge-long{background:var(--blue-light);color:#1e40af;}
-  .badge-activ{background:#fce7f3;color:#9d174d;}
-  .badge-race{background:#ede9fe;color:#4c1d95;}
-  .s-title{font-size:13px;font-weight:500;margin-bottom:3px;}
-  .s-sum{font-size:12px;color:var(--text-muted);margin-bottom:6px;line-height:1.5;}
-  .gel-note{font-size:11.5px;background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:5px 10px;margin-bottom:6px;color:#78350f;line-height:1.5;}
-  .decision-note{font-size:11.5px;background:#ede9fe;border-left:3px solid #7c3aed;border-radius:0 6px 6px 0;padding:5px 10px;margin-bottom:6px;color:#4c1d95;line-height:1.5;}
-  .wod{background:var(--gray-light);border-radius:6px;padding:8px 10px;font-size:11.5px;line-height:1.85;}
-  .wod-title{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin-bottom:5px;font-family:'DM Mono',monospace;}
-  .wod-row{display:flex;gap:8px;align-items:baseline;}
-  .wl{font-weight:500;min-width:155px;color:var(--text-muted);flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;}
-  .wv{color:var(--text);font-size:11.5px;}
-  .race-card{background:var(--green-light);border:1px solid var(--green-mid);border-radius:var(--radius);padding:1.25rem 1.5rem;text-align:center;margin-top:1.5rem;}
-  .race-card h2{font-size:15px;font-weight:600;color:#065f46;margin-bottom:8px;}
-  .race-card p{font-size:12.5px;color:#047857;line-height:1.8;}
+:root{
+  --bg:#f5f4f0;--surface:#ffffff;--ink:#1c1f24;--muted:#5d636b;--line:#e0ded7;
+  --accent:#1f5f8b;--accent-soft:#e3edf5;
+  --gel:#8a520a;--gel-soft:#fbf0dc;
+  --quality:#a8432a;--quality-soft:#f8e5df;
+  --race:#7a2e6b;--race-soft:#f5e4f0;
+  --wod:#f0efea;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121417;--surface:#1a1d21;--ink:#e6e8eb;--muted:#9aa1a9;--line:#2b3036;
+    --accent:#7db5de;--accent-soft:#1d2b37;--gel:#e0a44e;--gel-soft:#33280f;
+    --quality:#ea8b70;--quality-soft:#3a221b;--race:#df92cd;--race-soft:#36203a;--wod:#21252a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121417;--surface:#1a1d21;--ink:#e6e8eb;--muted:#9aa1a9;--line:#2b3036;
+  --accent:#7db5de;--accent-soft:#1d2b37;--gel:#e0a44e;--gel-soft:#33280f;
+  --quality:#ea8b70;--quality-soft:#3a221b;--race:#df92cd;--race-soft:#36203a;--wod:#21252a;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0;padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(40px,9vw,64px);text-transform:uppercase}
+h2{font-size:24px;text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.lede{color:var(--muted);max-width:62ch;margin:0}
+.head{display:flex;flex-direction:column;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.panel p{margin:0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+td.m{font-family:var(--mono);font-size:13px}
+tr.def td{background:var(--accent-soft)}
+.progress{display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width .3s}
+.plabel{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.phase{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:8px}
+details.week{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+details.week[open]{border-color:var(--ink)}
+details.week>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+details.week>summary::-webkit-details-marker{display:none}
+details.week>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+.wname{font-family:var(--display);font-weight:700;font-size:21px;text-transform:uppercase;flex:1;min-width:150px}
+.wmeta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.wcount{font-family:var(--mono);font-size:12.5px;color:var(--accent)}
+.now{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;background:var(--accent);color:var(--surface);padding:2px 7px;border-radius:99px}
+.wbody{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+.wnote{font-size:14px;color:var(--muted);margin:0}
+.session{border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:12px}
+.session.done{opacity:.6}
+.session input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}
+.session input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.s-main{display:flex;flex-direction:column;gap:8px;min-width:0}
+.s-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.day{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase}
+.tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.tag.q{background:var(--quality-soft);color:var(--quality)}
+.tag.r{background:var(--race-soft);color:var(--race)}
+.s-title{font-weight:600;font-size:16px;margin:0;font-family:var(--body);text-transform:none;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:12.5px;border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+.chip i{font-style:normal;color:var(--muted);font-family:var(--body);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+.note{font-size:14px;color:var(--muted);margin:0}
+.gel{font-size:13.5px;background:var(--gel-soft);color:var(--gel);border-radius:6px;padding:6px 10px}
+.wod{background:var(--wod);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.wod .lbl{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:2px}
+.row{display:grid;grid-template-columns:minmax(130px,auto) 1fr;gap:10px;font-size:13.5px}
+.row span:first-child{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+ul.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+@media (max-width:440px){.row{grid-template-columns:1fr;gap:0}.row span:first-child{margin-top:4px}}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
 </style>
-</head>
-<body>
-<div class="header">
-  <h1>Plan de reprise — Semi-marathon 25 octobre 2026</h1>
-  <p>Reprise dimanche 16 août après 6 semaines d'arrêt (canicule) · Dernière sortie avant pause : 6 juillet (16km)<br>
-     Objectif A : 2h30 (7'06"/km) — ambitieux vu la pause · Objectif B : 2h40-2h45 si le corps le demande</p>
-</div>
 
-<div class="warn-box">
-  <h3>⚠️ Points de vigilance pendant la reprise</h3>
-  <p>
-    Cette reprise est plus rapide qu'une reconstruction classique (habituellement on ajoute +10% de volume par semaine max). On la justifie parce que tu te sens en pleine forme et que le renforcement a maintenu ta force musculaire — mais reste à l'écoute de ton corps.<br><br>
-    <strong>Arrête ou ralentis si :</strong> douleur qui persiste plus de 24h, douleur qui s'intensifie pendant l'effort, raideur articulaire inhabituelle. Une courbature normale n'est pas un problème ; une douleur localisée et vive l'est.<br><br>
-    <strong>Point de vérité : dimanche 27 septembre</strong> (sortie longue 18km). C'est là qu'on regarde honnêtement si 2h30 reste réaliste ou s'il vaut mieux viser un peu plus prudent.
-  </p>
-</div>
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Mitja Marató · dimanche 14 février 2027</div>
+    <h1>Semi de Barcelone</h1>
+    <p class="lede">18 semaines, du dimanche 11 octobre au jour de course. On repart de la dernière sortie, 5 km le 2 octobre, et on monte doucement, avec une semaine plus légère toutes les 3 à 4 semaines.</p>
+  </header>
 
-<div class="progress-block">
-  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="gBar" style="width:0%"></div></div>
-  <div class="progress-label" id="gLabel">0 / 0 (0%)</div>
-</div>
+  <div class="stats">
+    <div class="stat"><b>18 sem.</b><span>de préparation</span></div>
+    <div class="stat"><b>19 km</b><span>plus longue sortie</span></div>
+    <div class="stat"><b>8 janv.</b><span>test 10 km</span></div>
+    <div class="stat"><b>~2h38</b><span>objectif provisoire</span></div>
+  </div>
 
-<div class="legend">
-  <span class="leg leg-easy">Facile 8'20"–8'30"</span>
-  <span class="leg leg-tempo">Tempo / race pace</span>
-  <span class="leg leg-frac">Fractionné</span>
-  <span class="leg leg-long">Longue</span>
-  <span class="leg leg-activ">Activation</span>
-  <span class="leg leg-race">Course</span>
-</div>
+  <section class="panel">
+    <h2>L'allure semi se fixe le 8 janvier</h2>
+    <p>D'ici là, les séances à « allure semi » utilisent 7'30"/km (2 h 38). Le test 10 km du vendredi 8 janvier donne votre vraie allure. Ensuite, on remplace 7'30" par la valeur du tableau dans les séances de janvier et février.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Test 10 km</th><th>Allure test</th><th>Allure semi</th><th>Chrono semi</th></tr></thead>
+        <tbody>
+          <tr><td class="m">1 h 05</td><td class="m">6'30"</td><td class="m">6'48"</td><td class="m">2 h 23</td></tr>
+          <tr><td class="m">1 h 08</td><td class="m">6'48"</td><td class="m">7'07"</td><td class="m">2 h 30</td></tr>
+          <tr class="def"><td class="m">1 h 11</td><td class="m">7'06"</td><td class="m">7'26"</td><td class="m">2 h 37</td></tr>
+          <tr><td class="m">1 h 14</td><td class="m">7'24"</td><td class="m">7'45"</td><td class="m">2 h 43</td></tr>
+          <tr><td class="m">1 h 17</td><td class="m">7'42"</td><td class="m">8'03"</td><td class="m">2 h 50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Tempo ≈ allure semi moins 10 s/km. Fractionné ≈ allure semi moins 20 s/km. L'allure facile reste à 8'30"/km tout le plan.</p>
+  </section>
 
-<div id="plan"></div>
+  <div class="progress">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="plabel" id="plabel">0 / 0</div>
+  </div>
 
-<div class="race-card">
-  <h2>🏁 Dimanche 25 octobre 2026 — Semi-marathon</h2>
-  <p>Km 1–5 : 7'20"/km · partir conservateur<br>
-     Km 5–15 : 7'06"/km si les sensations sont bonnes, sinon 7'20"–7'30"/km<br>
-     Km 15–21 : gérer selon les jambes — mieux vaut finir fort en 2h35 que craquer en visant 2h30 à tout prix<br>
-     Nutrition : 1 gel à 8km · 1 gel à 15km · eau à chaque ravitaillement</p>
+  <div id="plan" style="display:flex;flex-direction:column;gap:10px"></div>
+
+  <section class="panel">
+    <h2>Autour des courses</h2>
+    <ul class="rules">
+      <li><strong>Lundi : repos complet</strong>, le lendemain de la sortie longue.</li>
+      <li><strong>Mercredi : renforcement léger</strong>, 20–25 min de gainage et mobilité.</li>
+      <li><strong>Jeudi : padel ou renforcement</strong>, l'un ou l'autre.</li>
+      <li><strong>Semaine 18 :</strong> plus de padel, mobilité douce mercredi, puis repos.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Courir l'hiver</h2>
+    <ul class="rules">
+      <li>Gilet ou brassard réfléchissant et lampe frontale dès novembre pour les sorties du soir.</li>
+      <li>Sous 5 °C : warm up plus progressif, couche coupe-vent, gants. On doit avoir un peu froid les 10 premières minutes.</li>
+      <li>Verglas ou neige : tapis de course ou séance décalée d'un jour. Ne pas forcer sur sol glissant.</li>
+      <li>Barcelone en février : souvent 10–15 °C au départ. Les sorties longues fraîches de janvier préparent bien.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Quand lever le pied</h2>
+    <ul class="rules">
+      <li>Courbatures diffuses des deux côtés : séance à allure facile, plus courte si besoin.</li>
+      <li>Douleur localisée, articulaire ou tendineuse, ou qui augmente en courant : arrêt, et séance suivante sautée.</li>
+      <li>Séance manquée : on ne la rattrape pas, on reprend le plan au jour prévu.</li>
+      <li>Plus d'une semaine manquée : refaire la semaine précédente avant de continuer.</li>
+    </ul>
+  </section>
 </div>
 
 <script>
-const SK='semiplan_reprise_v2';
-const saved=JSON.parse(localStorage.getItem(SK)||'{}');
-function wod(rows){return '<div class="wod"><div class="wod-title">WorkOutDoors</div>'+rows.map(r=>'<div class="wod-row"><span class="wl">'+r[0]+'</span><span class="wv">'+r[1]+'</span></div>').join('')+'</div>';}
-function gel(txt){return '<div class="gel-note">Nutrition — '+txt+'</div>';}
-function decision(txt){return '<div class="decision-note">Point de décision — '+txt+'</div>';}
+var KEY='semi_barcelone_2027_v1';
+var saved={};
+try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
+function store(){try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}}
 
-const phases=[
-{name:"Phase 1 — Reconstruction prudente (sem. 1–3)",weeks:[
-{n:1,label:"Sem. 1 partielle — Premier pas",dates:"Dim 16 août",sessions:[
-{day:"Dim 16 août",bc:"badge-easy",bl:"Facile",title:"Retour au jogging — 4km effectifs",sum:"4,0 km · 8'30\"/km · 34 min effectifs · + 5 min marche + 5 min marche · Total ~44 min · Séance test : juste sentir comment réagit le corps",gel:null,wod:wod([["Warm up","5 min marche"],["Slow — 4km effectifs","34 min · 8'30\"/km"],["Cool down","5 min marche"]])}
-]},
-{n:2,label:"Sem. 2 — Reprise en douceur",dates:"17–23 août",sessions:[
-{day:"Mar 18 août",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 5km effectifs",sum:"5,0 km · 8'30\"/km · 42 min effectifs · + 10 min warm up + 10 min marche · Total ~62 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 5km effectifs","42 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 21 août",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 6km effectifs",sum:"6,0 km · 8'30\"/km · 51 min effectifs · + 10 min warm up + 10 min marche · Total ~71 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 6km effectifs","51 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Dim 23 août",bc:"badge-long",bl:"Longue légère",title:"Sortie longue légère — 8km effectifs",sum:"8,0 km · 8'30\"/km · 68 min effectifs · + 10 min warm up + 10 min marche · Total ~88 min · Écoute tes jambes, ralentis si besoin",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 8km effectifs","68 min · 8'30\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:3,label:"Sem. 3 — Consolidation",dates:"24–30 août",sessions:[
-{day:"Mar 25 août",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 6km effectifs",sum:"6,0 km · 8'30\"/km · 51 min effectifs · + 10 min warm up + 10 min marche · Total ~71 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 6km effectifs","51 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 28 août",bc:"badge-activ",bl:"Activation",title:"Facile + 4 strides — 7km effectifs",sum:"7,0 km · 8'30\"/km · + 4 strides de 20 sec en fin de séance (réveil neuromusculaire léger) · + 10 min warm up + 10 min marche · Total ~81 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 7km effectifs","59 min · 8'30\"/km"],["Strides (×4)","20 sec allure vive · Recover 90 sec marche"],["Cool down","10 min marche"]])},
-{day:"Dim 30 août",bc:"badge-long",bl:"Longue",title:"Sortie longue — 10km effectifs",sum:"10,0 km · 8'30\"/km · 85 min effectifs · + 10 min warm up + 10 min marche · Total ~105 min · Retour au niveau pré-pause",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 10km effectifs","85 min · 8'30\"/km"],["Cool down","10 min marche"]])}
-]}
-]},
-{name:"Phase 2 — Réintroduction de la qualité (sem. 4–6)",weeks:[
-{n:4,label:"Sem. 4",dates:"31 août–6 sept",sessions:[
-{day:"Mar 1 sept",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 7km effectifs",sum:"7,0 km · 8'30\"/km · 59 min effectifs · + 10 min warm up + 10 min marche · Total ~79 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 7km effectifs","59 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 4 sept",bc:"badge-tempo",bl:"Tempo",title:"1er tempo depuis la pause — ~7km effectifs",sum:"~7 km · + 15 min warm up + 10 min marche · Total ~78 min · Tempo : 7'30\"/km, prudent",gel:null,wod:wod([["Warm up","15 min course · 8'30\"/km (~1,8 km)"],["Steady — tempo","10 min · 7'30\"/km (~1,3 km)"],["Slow — complément","Course facile jusqu'à 7km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 6 sept",bc:"badge-long",bl:"Longue",title:"Sortie longue — 12km effectifs",sum:"12,0 km · 8'20\"/km · 100 min effectifs · + 10 min warm up + 10 min marche · Total ~120 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 12km effectifs","100 min · 8'20\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:5,label:"Sem. 5",dates:"7–13 sept",sessions:[
-{day:"Mar 8 sept",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 7km effectifs",sum:"7,0 km · 8'30\"/km · 59 min effectifs · + 10 min warm up + 10 min marche · Total ~79 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 7km effectifs","59 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 11 sept",bc:"badge-tempo",bl:"Tempo",title:"Tempo 15 min — ~8km effectifs",sum:"~8 km · + 15 min warm up + 10 min marche · Total ~85 min · Tempo : 7'20\"/km",gel:null,wod:wod([["Warm up","15 min course · 8'30\"/km (~1,8 km)"],["Steady — tempo","15 min · 7'20\"/km (~2,1 km)"],["Slow — complément","Course facile jusqu'à 8km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 13 sept",bc:"badge-long",bl:"Longue",title:"Sortie longue — 14km effectifs · reprise nutrition",sum:"14,0 km · 8'20\"/km · 117 min effectifs · + 10 min warm up + 10 min marche · Total ~137 min",gel:gel("1 gel à 8km — reprendre le protocole nutrition là où tu l'avais laissé"),wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 14km effectifs","117 min · 8'20\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:6,label:"Sem. 6",dates:"14–20 sept",sessions:[
-{day:"Mar 15 sept",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 8km effectifs",sum:"8,0 km · 8'20\"/km · 66 min effectifs · + 10 min warm up + 10 min marche · Total ~86 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 8km effectifs","66 min · 8'20\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 18 sept",bc:"badge-frac",bl:"Fractionné",title:"Fractionné 4×1km — ~9km effectifs",sum:"~9 km · + 15 min warm up + 10 min marche · Total ~90 min · Effort : 7'00\"/km",gel:null,wod:wod([["Warm up","15 min course · 8'30\"/km (~1,8 km)"],["Fast / Recover (×4)","Fast 1 km à 7'00\"/km · Recover 2 min à 8'30\""],["Slow — complément","Course facile jusqu'à 9km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 20 sept",bc:"badge-long",bl:"Longue",title:"Sortie longue — 16km effectifs",sum:"16,0 km · 8'15\"/km · 132 min effectifs · + 10 min warm up + 10 min marche · Total ~152 min",gel:gel("2 gels — 1 à 8km · 1 à 13km"),wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 16km effectifs","132 min · 8'15\"/km"],["Cool down","10 min marche"]])}
-]}
-]},
-{name:"Phase 3 — Spécifique semi (sem. 7–8)",weeks:[
-{n:7,label:"Sem. 7 — Point de vérité",dates:"21–27 sept",sessions:[
-{day:"Mar 22 sept",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 8km effectifs",sum:"8,0 km · 8'20\"/km · 66 min effectifs · + 10 min warm up + 10 min marche · Total ~86 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 8km effectifs","66 min · 8'20\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 25 sept",bc:"badge-tempo",bl:"Race pace",title:"1er race pace 20 min — ~8km effectifs",sum:"~8 km · + 10 min warm up + 10 min marche · Total ~78 min · Race pace : 7'06\"/km — sensation clé de la semaine",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Steady — race pace","20 min · 7'06\"/km (~2,8 km)"],["Slow — complément","Course facile jusqu'à 8km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 27 sept",bc:"badge-long",bl:"Longue",title:"Sortie longue — 18km effectifs",sum:"18,0 km · 8'15\"/km · 149 min effectifs · + 10 min warm up + 10 min marche · Total ~169 min",
-gel:gel("2 gels — 1 à 8km · 1 à 15km"),
-decision:decision("Comment te sens-tu sur cette sortie ? Si les 18km passent bien à 8'15\"/km et que le race pace de vendredi était gérable → 2h30 reste dans le viseur. Si c'est difficile → viser 2h40-2h45 est plus sage et tout aussi valable."),
-wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 18km effectifs","149 min · 8'15\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:8,label:"Sem. 8 — Pic",dates:"28 sept–4 oct",sessions:[
-{day:"Mar 29 sept",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 9km effectifs",sum:"9,0 km · 8'15\"/km · 74 min effectifs · + 10 min warm up + 10 min marche · Total ~94 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 9km effectifs","74 min · 8'15\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 2 oct",bc:"badge-tempo",bl:"Race pace",title:"Race pace 30 min — ~9km effectifs",sum:"~9 km · + 15 min warm up + 10 min marche · Total ~93 min · Race pace : 7'06\"/km",gel:null,wod:wod([["Warm up","15 min course · 8'30\"/km (~1,8 km)"],["Steady — race pace","30 min · 7'06\"/km (~4,2 km)"],["Slow — complément","Course facile jusqu'à 9km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 4 oct",bc:"badge-long",bl:"Longue",title:"Sortie longue — 19km effectifs · dernière grosse sortie",sum:"19,0 km · 8'15\"/km · 157 min effectifs · + 10 min warm up + 10 min marche · Total ~177 min",gel:gel("2 gels — 1 à 8km · 1 à 15km · simulation complète tenue + nutrition de course"),wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 19km effectifs","157 min · 8'15\"/km"],["Cool down","10 min marche"]])}
-]}
-]},
-{name:"Phase 4 — Affûtage & course (sem. 9–11)",weeks:[
-{n:9,label:"Sem. 9 — Début affûtage",dates:"5–11 oct",sessions:[
-{day:"Mar 6 oct",bc:"badge-easy",bl:"Facile",title:"Sortie facile — 8km effectifs",sum:"8,0 km · 8'20\"/km · 66 min effectifs · + 10 min warm up + 10 min marche · Total ~86 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 8km effectifs","66 min · 8'20\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 9 oct",bc:"badge-tempo",bl:"Race pace",title:"Race pace court 15 min — ~6km effectifs",sum:"~6 km · + 10 min warm up + 10 min marche · Total ~62 min · Race pace : 7'06\"/km",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Steady — race pace","15 min · 7'06\"/km (~2,1 km)"],["Slow — complément","Course facile jusqu'à 6km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 11 oct",bc:"badge-long",bl:"Longue modérée",title:"Sortie longue modérée — 12km effectifs",sum:"12,0 km · 8'20\"/km · 100 min effectifs · + 10 min warm up + 10 min marche · Total ~120 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 12km effectifs","100 min · 8'20\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:10,label:"Sem. 10 — Affûtage",dates:"12–18 oct",sessions:[
-{day:"Mar 13 oct",bc:"badge-easy",bl:"Facile",title:"Sortie légère — 6km effectifs",sum:"6,0 km · 8'30\"/km · 51 min effectifs · + 10 min warm up + 10 min marche · Total ~71 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 6km effectifs","51 min · 8'30\"/km"],["Cool down","10 min marche"]])},
-{day:"Ven 16 oct",bc:"badge-activ",bl:"Activation",title:"Activation + 3 strides — ~4km effectifs",sum:"~4 km · + 10 min warm up + 10 min marche · Total ~50 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Fast / Recover (×3)","Fast 30 sec à 7'06\" · Recover 2 min marche"],["Slow — complément","Course facile jusqu'à 4km effectifs"],["Cool down","10 min marche"]])},
-{day:"Dim 18 oct",bc:"badge-easy",bl:"Facile",title:"Trot — 8km effectifs",sum:"8,0 km · 8'30\"/km · 68 min effectifs · + 10 min warm up + 10 min marche · Total ~88 min",gel:null,wod:wod([["Warm up","10 min course · 8'30\"/km (~1,2 km)"],["Slow — 8km effectifs","68 min · 8'30\"/km"],["Cool down","10 min marche"]])}
-]},
-{n:11,label:"Sem. 11 — Semaine de course",dates:"19–25 oct",sessions:[
-{day:"Mar 20 oct",bc:"badge-easy",bl:"Facile",title:"Trot très léger — 4km effectifs",sum:"4,0 km · 8'30\"/km · 34 min effectifs · + 5 min marche + 5 min marche · Total ~44 min",gel:null,wod:wod([["Warm up","5 min marche"],["Slow — 4km effectifs","34 min · 8'30\"/km"],["Cool down","5 min marche"]])},
-{day:"Ven 23 oct",bc:"badge-activ",bl:"Activation",title:"Réveil musculaire — 2km + 3 strides",sum:"~2 km · + 5 min marche + 5 min marche · Total ~25 min",gel:null,wod:wod([["Warm up","5 min marche"],["Slow","5 min · 8'30\"/km (~0,6 km)"],["Fast / Recover (×3)","Fast 20 sec à 7'06\" · Recover 90 sec marche"],["Slow — complément","Course facile jusqu'à 2km effectifs"],["Cool down","5 min marche"]])},
-{day:"Sam 24 oct",bc:"badge-easy",bl:"Veille",title:"Marche activatrice 15 min — pas de course",sum:"15 min de marche rapide · Coucher tôt · Préparer dossard, gels, tenue",gel:null,wod:wod([["Walk","15 min · allure soutenue"]])},
-{day:"Dim 25 oct",bc:"badge-race",bl:"Course",title:"SEMI-MARATHON — JOUR J",sum:"21,097 km · Objectif A : 2h30 (7'06\"/km) · Objectif B : 2h40-2h45",gel:gel("2 gels — 1 à 8km · 1 à 15km · eau à chaque ravitaillement · ne rien tester de nouveau"),wod:wod([["Warm up","10 min marche dynamique + 3×30 sec allure course"],["Slow (km 1–5)","7'20\"/km · partir conservateur"],["Steady (km 5–15)","7'06\"/km si bonnes sensations, sinon 7'20\"-7'30\""],["Fast (km 15–21)","selon les jambes — gérer, pas subir"],["Cool down","Marche après la ligne d'arrivée"]])}
-]}
-]}
+var AS="7'30\"";
+var WU10=["Warm up","10 min course · 8'30\"/km (~1,2 km)"];
+var WU15=["Warm up","15 min course · 8'30\"/km (~1,8 km)"];
+var CD10=["Cool down","10 min marche"];
+function m(km){return Math.round(km*8.5);}
+function hm(min){if(min<60)return min+' min';var h=Math.floor(min/60),r=min%60;return h+' h '+(r<10?'0':'')+r;}
+function kmf(km){return String(km).replace('.',',')+' km';}
+
+function E(day,km,note){return {day:day,tag:'Facile',title:'Sortie facile',pace:"8'30\"/km",dur:hm(m(km)),dist:kmf(km),total:'~'+hm(m(km)+20),note:note,
+  wod:[WU10,['Slow — '+kmf(km),hm(m(km))+" · 8'30\"/km"],CD10]};}
+function S(day,km,n,note){return {day:day,tag:'Activation',q:1,title:'Facile + '+n+' accélérations',pace:"8'30\"/km, strides ~7'00\"",dur:hm(m(km))+' + '+(n*2)+' min',dist:kmf(km),total:'~'+hm(m(km)+n*2+20),
+  note:note||'Les accélérations arrivent après le warm up et la sortie facile : les jambes sont chaudes.',
+  wod:[WU10,['Slow — '+kmf(km),hm(m(km))+" · 8'30\"/km"],['Fast / Recover (×'+n+')',"Fast 20 s ~7'00\"/km · Recover 1'40 marche"],CD10]};}
+function L(day,km,gel,note,pace){var p=pace||"8'30\"";return {day:day,tag:'Longue',title:'Sortie longue',pace:p+'/km',dur:hm(m(km)),dist:kmf(km),total:'~'+hm(m(km)+20),gel:gel,note:note,
+  wod:[WU10,['Slow — '+kmf(km),hm(m(km))+' · '+p+'/km'],CD10]};}
+function Q(day,tag,title,pace,dur,km,mid,note,gel){return {day:day,tag:tag,q:1,title:title,pace:pace,dur:hm(dur),dist:kmf(km),total:'~'+hm(dur+25),note:note,gel:gel,
+  wod:[WU15].concat(mid,[['Slow — complément','Course facile jusqu\'à '+kmf(km)+' effectifs'],CD10])};}
+
+var weeks=[
+{ph:"Phase 1 · Refaire la base",n:0,label:"Aujourd'hui · reprise",start:"2026-10-11",dates:"Dim 11 oct",note:"Neuf jours sans courir depuis le 2 octobre : une sortie facile un peu plus longue que la dernière.",s:[
+  E('Dim 11 oct',6,"Coude d'Alina : couvrir la plaie, et ne courir que si le bras ne fait pas mal en balançant. Marcher une minute si besoin, sans culpabiliser.")]},
+{ph:"",n:1,start:"2026-10-12",dates:"12 – 18 oct",note:"Que du facile. Le corps se réhabitue au rythme de 3 sorties par semaine.",s:[
+  E('Mar 13 oct',5),E('Ven 16 oct',5),L('Dim 18 oct',8)]},
+{ph:"",n:2,start:"2026-10-19",dates:"19 – 25 oct",note:"Premières accélérations courtes, juste pour réveiller les jambes.",s:[
+  E('Mar 20 oct',5),S('Ven 23 oct',5,4),L('Dim 25 oct',9)]},
+{ph:"",n:3,start:"2026-10-26",dates:"26 oct – 1 nov",note:"Premier fartlek : des petites relances sans pression.",s:[
+  E('Mar 27 oct',6),
+  Q('Ven 30 oct','Fartlek','Fartlek 6 × 1 min',"7'15\"/km, rec. 8'30\"",50,6,[['Fast / Recover (×6)',"Fast 1 min à 7'15\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 1 nov',10)]},
+{ph:"",n:4,start:"2026-11-02",dates:"2 – 8 nov",light:1,note:"Semaine allégée : le corps assimile les 3 premières semaines.",s:[
+  E('Mar 3 nov',5),S('Ven 6 nov',5,4),L('Dim 8 nov',8)]},
+{ph:"Phase 2 · Construire l'endurance",n:5,start:"2026-11-09",dates:"9 – 15 nov",note:"Le tempo arrive : un effort soutenu mais contrôlé.",s:[
+  E('Mar 10 nov',6),
+  Q('Ven 13 nov','Tempo','Tempo 2 × 8 min',"7'45\"/km",50,6,[['Steady (×2)',"8 min à 7'45\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 15 nov',11)]},
+{ph:"",n:6,start:"2026-11-16",dates:"16 – 22 nov",note:"",s:[
+  E('Mar 17 nov',6),
+  Q('Ven 20 nov','Fractionné','Fractionné 5 × 2 min',"7'15\"/km",58,7,[['Fast / Recover (×5)',"Fast 2 min à 7'15\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 22 nov',12)]},
+{ph:"",n:7,start:"2026-11-23",dates:"23 – 29 nov",note:"",s:[
+  E('Mar 24 nov',7),
+  Q('Ven 27 nov','Tempo','Tempo 2 × 10 min',"7'45\"/km",58,7,[['Steady (×2)',"10 min à 7'45\"/km · Recover 3 min à 8'30\""]]),
+  L('Dim 29 nov',13)]},
+{ph:"",n:8,start:"2026-11-30",dates:"30 nov – 6 déc",light:1,note:"Semaine allégée.",s:[
+  E('Mar 1 déc',6),S('Ven 4 déc',6,4),L('Dim 6 déc',10)]},
+{ph:"",n:9,start:"2026-12-07",dates:"7 – 13 déc",note:"Premier gel depuis l'été, sur la sortie longue.",s:[
+  E('Mar 8 déc',7),
+  Q('Ven 11 déc','Fractionné','Fractionné 4 × 1 km',"7'10\"/km",63,8,[['Fast / Recover (×4)',"Fast 1 km à 7'10\"/km · Recover 3 min à 8'30\""]]),
+  L('Dim 13 déc',14,"1 gel au km 7, avec de l'eau.")]},
+{ph:"",n:10,start:"2026-12-14",dates:"14 – 20 déc",note:"",s:[
+  E('Mar 15 déc',7),
+  Q('Ven 18 déc','Tempo','Tempo 20 min',"7'35\"/km",66,8,[['Steady — tempo',"20 min à 7'35\"/km (~2,6 km)"]]),
+  L('Dim 20 déc',15,"1 gel au km 7.")]},
+{ph:"",n:11,start:"2026-12-21",dates:"21 – 27 déc",light:1,note:"Semaine de Noël allégée. Les séances peuvent glisser d'un jour selon les fêtes.",s:[
+  E('Mar 22 déc',6),E('Ven 25 déc',5,"Jour de Noël : à faire jeudi 24 ou samedi 26 si c'est plus simple."),L('Dim 27 déc',12)]},
+{ph:"",n:12,start:"2026-12-28",dates:"28 déc – 3 janv",note:"",s:[
+  E('Mar 29 déc',7),S('Ven 1 janv',7,4,"Jour de l'an : à décaler au samedi 2 si besoin."),L('Dim 3 janv',16,"2 gels : km 7 et km 13.")]},
+{ph:"Phase 3 · Spécifique semi",n:13,start:"2027-01-04",dates:"4 – 10 janv",note:"Semaine du test. Mardi très facile pour arriver frais vendredi.",s:[
+  E('Mar 5 janv',6),
+  {day:'Ven 8 janv',tag:'Test',q:1,title:'Test 10 km',pace:'effort soutenu et régulier',dur:'~1 h 10',dist:'10 km',total:'~1 h 35',
+   note:"Partir prudemment les 2 premiers km, puis tenir l'allure la plus rapide possible jusqu'au bout. Noter le chrono : il fixe l'allure semi dans le tableau.",
+   wod:[WU15,['Fast — 10 km','Effort maximal soutenable, régulier'],CD10]},
+  L('Dim 10 janv',14,"1 gel au km 7.","Sortie très facile, le lendemain du test compte peu : jambes légères.")]},
+{ph:"",n:14,start:"2027-01-11",dates:"11 – 17 janv",note:"Remplacez 7'30\" par votre allure semi du tableau.",s:[
+  E('Mar 12 janv',8),
+  Q('Ven 15 janv','Allure semi','2 × 3 km à allure semi',AS+'/km',71,9,[['Steady (×2)','3 km à '+AS+'/km · Recover 3 min à 8\'30"']]),
+  L('Dim 17 janv',17,"2 gels : km 7 et km 13.")]},
+{ph:"",n:15,start:"2027-01-18",dates:"18 – 24 janv",note:"Semaine la plus chargée du plan.",s:[
+  E('Mar 19 janv',8),
+  Q('Ven 22 janv','Fractionné','Fractionné 5 × 1 km',"allure semi − 20 s (~7'10\")",70,9,[['Fast / Recover (×5)',"Fast 1 km à ~7'10\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 24 janv',19,"2 gels : km 7 et km 14. Tenue, chaussures et petit-déjeuner du jour J.","La plus longue sortie du plan. Répétition générale.")]},
+{ph:"",n:16,start:"2027-01-25",dates:"25 – 31 janv",note:"",s:[
+  E('Mar 26 janv',8),
+  Q('Ven 29 janv','Tempo','Tempo 25 min',"allure semi − 10 s (~7'20\")",64,8,[['Steady — tempo',"25 min à ~7'20\"/km (~3,4 km)"]]),
+  {day:'Dim 31 janv',tag:'Longue',title:'Longue avec fin à allure semi',pace:"8'30\" puis "+AS,dur:'2 h 10',dist:'16 km',total:'~2 h 30',
+   gel:"2 gels : km 7 et km 13.",note:"Les 6 derniers km à allure semi, sur des jambes déjà fatiguées : c'est la sensation de la fin de course.",
+   wod:[WU10,['Slow — 10 km',"85 min · 8'30\"/km"],['Steady — 6 km','45 min · '+AS+'/km'],CD10]}]},
+{ph:"Phase 4 · Affûtage et course",n:17,start:"2027-02-01",dates:"1 – 7 févr",note:"Le volume baisse, l'allure semi reste.",s:[
+  E('Mar 2 févr',7),
+  Q('Ven 5 févr','Allure semi','3 × 2 km à allure semi',AS+'/km',54,7,[['Steady (×3)','2 km à '+AS+'/km · Recover 2 min à 8\'30"']]),
+  L('Dim 7 févr',12)]},
+{ph:"",n:18,start:"2027-02-08",dates:"8 – 14 févr",race:1,note:"Jambes fraîches. Voyage vers Barcelone en fin de semaine.",s:[
+  Q('Mar 9 févr','Allure semi','3 × 1 km à allure semi',AS+'/km',48,6,[['Steady (×3)','1 km à '+AS+'/km · Recover 2 min à 8\'30"']]),
+  S('Ven 12 févr',3,3,"Courte, avant le voyage si possible."),
+  {day:'Sam 13 févr',tag:'Veille',title:'Trot ou marche 15 min',pace:'très facile',dur:'15 min',dist:'~1,5 km',total:'15 min',
+   note:"Retirer le dossard, préparer gels, tenue, épingles. Repas simple et connu.",wod:[['Walk / Slow','15 min très facile']]},
+  {day:'Dim 14 févr',tag:'Course',r:1,title:'Mitja Marató de Barcelona',pace:AS+'/km (ou allure du test)',dur:'~2 h 38',dist:'21,1 km',total:'selon le test du 8 janvier',
+   gel:"2 gels : km 7 et km 14. De l'eau à chaque ravitaillement. Rien de nouveau ce jour-là.",
+   note:"Départ dans la foule : les 3 premiers km 10–15 s plus lents que l'allure semi. On accélère seulement après le km 16, si les jambes le permettent.",
+   wod:[['Warm up','10 min marche dynamique + 3 min trot léger'],['Slow (km 1–3)','Allure semi + 10–15 s/km'],['Steady (km 3–16)','Allure semi'],['Fast (km 16–21)','Selon sensations : tenir ou accélérer'],['Cool down',"Marche après l'arrivée"]]}]}
 ];
 
-let total=0;phases.forEach(p=>p.weeks.forEach(wk=>total+=wk.sessions.length));
-function updateGlobal(){const ck=Object.values(saved).filter(Boolean).length;const pct=Math.round(ck/total*100);document.getElementById('gBar').style.width=pct+'%';document.getElementById('gLabel').textContent=ck+' / '+total+' ('+pct+'%)';}
-const container=document.getElementById('plan');
-phases.forEach(phase=>{
-  const pl=document.createElement('div');pl.className='phase-title';pl.textContent=phase.name;container.appendChild(pl);
-  phase.weeks.forEach(week=>{
-    const card=document.createElement('div');card.className='week-card';
-    const wCk=week.sessions.filter((_,i)=>saved['w'+week.n+'_s'+i]).length;
-    if(wCk===week.sessions.length)card.classList.add('week-done');
-    const hdr=document.createElement('div');hdr.className='week-hdr';
-    hdr.innerHTML='<span class="week-title">'+week.label+(wCk===week.sessions.length?' ✓':'')+'</span><span class="week-dates">'+week.dates+'</span><span class="week-count" id="wc'+week.n+'">'+wCk+'/'+week.sessions.length+'</span><span class="week-chev">▶</span>';
-    card.appendChild(hdr);
-    const body=document.createElement('div');body.className='week-body';
-    week.sessions.forEach((s,i)=>{
-      const key='w'+week.n+'_s'+i;
-      const row=document.createElement('div');row.className='session';
-      row.innerHTML='<input type="checkbox"'+(saved[key]?' checked':'')+'><div class="s-body"><div class="s-top"><span class="s-day">'+s.day+'</span><span class="badge '+s.bc+'">'+s.bl+'</span></div><div class="s-title">'+s.title+'</div><div class="s-sum">'+s.sum+'</div>'+(s.gel||'')+(s.decision||'')+s.wod+'</div>';
-      body.appendChild(row);
-      row.querySelector('input').addEventListener('change',function(){saved[key]=this.checked;localStorage.setItem(SK,JSON.stringify(saved));updateGlobal();const wc=week.sessions.filter((_,j)=>saved['w'+week.n+'_s'+j]).length;document.getElementById('wc'+week.n).textContent=wc+'/'+week.sessions.length;const wd=wc===week.sessions.length;card.classList.toggle('week-done',wd);hdr.querySelector('.week-title').textContent=week.label+(wd?' ✓':'');});
+var total=0,ids=[];
+weeks.forEach(function(w){w.s.forEach(function(s,i){s.id='w'+w.n+'s'+i;total++;});});
+function update(){
+  var n=0;weeks.forEach(function(w){w.s.forEach(function(s){if(saved[s.id])n++;});});
+  document.getElementById('fill').style.width=Math.round(n/total*100)+'%';
+  document.getElementById('plabel').textContent=n+' / '+total+' séances';
+}
+function wkm(w){var t=0;w.s.forEach(function(s){var v=parseFloat(String(s.dist).replace(/[^0-9,]/g,'').replace(',','.'));if(!isNaN(v))t+=v;});return Math.round(t*10)/10;}
+
+var today=new Date();today.setHours(12,0,0,0);
+var openIdx=-1;
+weeks.forEach(function(w,i){var st=new Date(w.start+'T00:00:00');var en=new Date(st);en.setDate(st.getDate()+7);if(openIdx<0&&today<en)openIdx=i;});
+if(openIdx<0)openIdx=weeks.length-1;
+
+var plan=document.getElementById('plan');
+weeks.forEach(function(w,i){
+  if(w.ph){var p=document.createElement('div');p.className='phase';p.textContent=w.ph;plan.appendChild(p);}
+  var d=document.createElement('details');d.className='week';if(i===openIdx)d.open=true;
+  var label=w.label?w.label:w.race?'Semaine 18 · course':'Semaine '+w.n+(w.light?' · allégée':'');
+  var done=w.s.filter(function(s){return saved[s.id];}).length;
+  var sum=document.createElement('summary');
+  sum.innerHTML='<span class="wname">'+label+'</span>'+(i===openIdx?'<span class="now">en cours</span>':'')+'<span class="wmeta">'+w.dates+' · '+String(wkm(w)).replace('.',',')+' km</span><span class="wcount">'+done+'/'+w.s.length+'</span>';
+  d.appendChild(sum);
+  var body=document.createElement('div');body.className='wbody';
+  if(w.note){var pn=document.createElement('p');pn.className='wnote';pn.textContent=w.note;body.appendChild(pn);}
+  w.s.forEach(function(s){
+    var a=document.createElement('article');a.className='session'+(saved[s.id]?' done':'');
+    var cls=s.r?'tag r':(s.q?'tag q':'tag');
+    a.innerHTML='<input type="checkbox" id="'+s.id+'" aria-label="'+s.day+' : '+s.title+'"'+(saved[s.id]?' checked':'')+'>'+
+      '<div class="s-main"><div class="s-top"><span class="day">'+s.day+'</span><span class="'+cls+'">'+s.tag+'</span></div>'+
+      '<h3 class="s-title">'+s.title+'</h3>'+
+      '<div class="chips"><span class="chip"><i>Allure</i>'+s.pace+'</span><span class="chip"><i>Durée</i>'+s.dur+'</span><span class="chip"><i>Distance</i>'+s.dist+'</span><span class="chip"><i>Total</i>'+s.total+'</span></div>'+
+      (s.note?'<p class="note">'+s.note+'</p>':'')+
+      (s.gel?'<div class="gel">Nutrition · '+s.gel+'</div>':'')+
+      '<div class="wod"><div class="lbl">WorkOutDoors</div>'+s.wod.map(function(r){return '<div class="row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('')+'</div></div>';
+    a.querySelector('input').addEventListener('change',function(){
+      saved[s.id]=this.checked;a.classList.toggle('done',this.checked);store();update();
+      var c=w.s.filter(function(x){return saved[x.id];}).length;sum.querySelector('.wcount').textContent=c+'/'+w.s.length;
     });
-    card.appendChild(body);
-    hdr.addEventListener('click',()=>{const o=body.classList.toggle('open');hdr.querySelector('.week-chev').classList.toggle('open',o);});
-    container.appendChild(card);
+    body.appendChild(a);
   });
+  d.appendChild(body);plan.appendChild(d);
 });
-updateGlobal();
-const weekStarts={1:new Date(2026,7,16),2:new Date(2026,7,17),3:new Date(2026,7,24),4:new Date(2026,7,31),5:new Date(2026,8,7),6:new Date(2026,8,14),7:new Date(2026,8,21),8:new Date(2026,8,28),9:new Date(2026,9,5),10:new Date(2026,9,12),11:new Date(2026,9,19)};
-const today=new Date();let idx=0;let found=false;
-phases.forEach(phase=>phase.weeks.forEach(week=>{if(!found){const ws=weekStarts[week.n];if(ws){const we=new Date(ws);we.setDate(ws.getDate()+13);if(today>=ws&&today<=we){found=true;const cards=container.querySelectorAll('.week-card');const wc=cards[idx];if(wc){const b=wc.querySelector('.week-body');const ch=wc.querySelector('.week-chev');b.classList.add('open');ch.classList.add('open');setTimeout(()=>wc.scrollIntoView({behavior:'smooth',block:'start'}),200);}}}idx++;}
-}));
+update();
 </script>
-</body>
-</html>
