@@ -105,28 +105,29 @@ ul.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
   <header class="head">
     <div class="eyebrow">Mitja Marató · dimanche 14 février 2027</div>
     <h1>Semi de Barcelone</h1>
-    <p class="lede">18 semaines, du dimanche 11 octobre au jour de course. On repart de la dernière sortie, 5 km le 2 octobre, et on monte doucement, avec une semaine plus légère toutes les 3 à 4 semaines.</p>
+    <p class="lede">12 semaines, du mardi 24 novembre au jour de course. Point de départ : 6 km à 8'15"/km le samedi 21 novembre, une allure soutenue. On reconstruit la base sans brûler les étapes, avec une semaine plus légère à Noël.</p>
   </header>
 
   <div class="stats">
-    <div class="stat"><b>18 sem.</b><span>de préparation</span></div>
-    <div class="stat"><b>19 km</b><span>plus longue sortie</span></div>
+    <div class="stat"><b>12 sem.</b><span>de préparation</span></div>
+    <div class="stat"><b>17 km</b><span>plus longue sortie</span></div>
     <div class="stat"><b>8 janv.</b><span>test 10 km</span></div>
-    <div class="stat"><b>~2h38</b><span>objectif provisoire</span></div>
+    <div class="stat"><b>~2h47</b><span>objectif provisoire</span></div>
   </div>
 
   <section class="panel">
     <h2>L'allure semi se fixe le 8 janvier</h2>
-    <p>D'ici là, les séances à « allure semi » utilisent 7'30"/km (2 h 38). Le test 10 km du vendredi 8 janvier donne votre vraie allure. Ensuite, on remplace 7'30" par la valeur du tableau dans les séances de janvier et février.</p>
+    <p>D'ici là, les séances à « allure semi » utilisent 7'55"/km (2 h 47). Le test 10 km du vendredi 8 janvier donne votre vraie allure. Ensuite, on remplace 7'55" par la valeur du tableau dans les séances de janvier et février.</p>
     <div class="tbl">
       <table>
         <thead><tr><th>Test 10 km</th><th>Allure test</th><th>Allure semi</th><th>Chrono semi</th></tr></thead>
         <tbody>
           <tr><td class="m">1 h 05</td><td class="m">6'30"</td><td class="m">6'48"</td><td class="m">2 h 23</td></tr>
           <tr><td class="m">1 h 08</td><td class="m">6'48"</td><td class="m">7'07"</td><td class="m">2 h 30</td></tr>
-          <tr class="def"><td class="m">1 h 11</td><td class="m">7'06"</td><td class="m">7'26"</td><td class="m">2 h 37</td></tr>
+          <tr><td class="m">1 h 11</td><td class="m">7'06"</td><td class="m">7'26"</td><td class="m">2 h 37</td></tr>
           <tr><td class="m">1 h 14</td><td class="m">7'24"</td><td class="m">7'45"</td><td class="m">2 h 43</td></tr>
-          <tr><td class="m">1 h 17</td><td class="m">7'42"</td><td class="m">8'03"</td><td class="m">2 h 50</td></tr>
+          <tr class="def"><td class="m">1 h 16</td><td class="m">7'36"</td><td class="m">7'55"</td><td class="m">2 h 47</td></tr>
+          <tr><td class="m">1 h 20</td><td class="m">8'00"</td><td class="m">8'22"</td><td class="m">2 h 57</td></tr>
         </tbody>
       </table>
     </div>
@@ -146,7 +147,7 @@ ul.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
       <li><strong>Lundi : repos complet</strong>, le lendemain de la sortie longue.</li>
       <li><strong>Mercredi : renforcement léger</strong>, 20–25 min de gainage et mobilité.</li>
       <li><strong>Jeudi : padel ou renforcement</strong>, l'un ou l'autre.</li>
-      <li><strong>Semaine 18 :</strong> plus de padel, mobilité douce mercredi, puis repos.</li>
+      <li><strong>Semaine 12 :</strong> plus de padel, mobilité douce mercredi, puis repos.</li>
     </ul>
   </section>
 
@@ -172,12 +173,12 @@ ul.rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 </div>
 
 <script>
-var KEY='semi_barcelone_2027_v1';
+var KEY='semi_barcelone_2027_v2';
 var saved={};
 try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
 function store(){try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}}
 
-var AS="7'30\"";
+var AS="7'55\"";
 var WU10=["Warm up","10 min course · 8'30\"/km (~1,2 km)"];
 var WU15=["Warm up","15 min course · 8'30\"/km (~1,8 km)"];
 var CD10=["Cool down","10 min marche"];
@@ -196,74 +197,50 @@ function Q(day,tag,title,pace,dur,km,mid,note,gel){return {day:day,tag:tag,q:1,t
   wod:[WU15].concat(mid,[['Slow — complément','Course facile jusqu\'à '+kmf(km)+' effectifs'],CD10])};}
 
 var weeks=[
-{ph:"Phase 1 · Refaire la base",n:0,label:"Aujourd'hui · reprise",start:"2026-10-11",dates:"Dim 11 oct",note:"Neuf jours sans courir depuis le 2 octobre : une sortie facile un peu plus longue que la dernière.",s:[
-  E('Dim 11 oct',6,"Marcher une minute si besoin, sans culpabiliser.")]},
-{ph:"",n:1,start:"2026-10-12",dates:"12 – 18 oct",note:"Que du facile. Le corps se réhabitue au rythme de 3 sorties par semaine.",s:[
-  E('Mar 13 oct',5),E('Ven 16 oct',5),L('Dim 18 oct',8)]},
-{ph:"",n:2,start:"2026-10-19",dates:"19 – 25 oct",note:"Premières accélérations courtes, juste pour réveiller les jambes.",s:[
-  E('Mar 20 oct',5),S('Ven 23 oct',5,4),L('Dim 25 oct',9)]},
-{ph:"",n:3,start:"2026-10-26",dates:"26 oct – 1 nov",note:"Premier fartlek : des petites relances sans pression.",s:[
-  E('Mar 27 oct',6),
-  Q('Ven 30 oct','Fartlek','Fartlek 6 × 1 min',"7'15\"/km, rec. 8'30\"",50,6,[['Fast / Recover (×6)',"Fast 1 min à 7'15\"/km · Recover 2 min à 8'30\""]]),
-  L('Dim 1 nov',10)]},
-{ph:"",n:4,start:"2026-11-02",dates:"2 – 8 nov",light:1,note:"Semaine allégée : le corps assimile les 3 premières semaines.",s:[
-  E('Mar 3 nov',5),S('Ven 6 nov',5,4),L('Dim 8 nov',8)]},
-{ph:"Phase 2 · Construire l'endurance",n:5,start:"2026-11-09",dates:"9 – 15 nov",note:"Le tempo arrive : un effort soutenu mais contrôlé.",s:[
-  E('Mar 10 nov',6),
-  Q('Ven 13 nov','Tempo','Tempo 2 × 8 min',"7'45\"/km",50,6,[['Steady (×2)',"8 min à 7'45\"/km · Recover 2 min à 8'30\""]]),
-  L('Dim 15 nov',11)]},
-{ph:"",n:6,start:"2026-11-16",dates:"16 – 22 nov",note:"",s:[
-  E('Mar 17 nov',6),
-  Q('Ven 20 nov','Fractionné','Fractionné 5 × 2 min',"7'15\"/km",58,7,[['Fast / Recover (×5)',"Fast 2 min à 7'15\"/km · Recover 2 min à 8'30\""]]),
-  L('Dim 22 nov',12)]},
-{ph:"",n:7,start:"2026-11-23",dates:"23 – 29 nov",note:"",s:[
-  E('Mar 24 nov',7),
-  Q('Ven 27 nov','Tempo','Tempo 2 × 10 min',"7'45\"/km",58,7,[['Steady (×2)',"10 min à 7'45\"/km · Recover 3 min à 8'30\""]]),
-  L('Dim 29 nov',13)]},
-{ph:"",n:8,start:"2026-11-30",dates:"30 nov – 6 déc",light:1,note:"Semaine allégée.",s:[
-  E('Mar 1 déc',6),S('Ven 4 déc',6,4),L('Dim 6 déc',10)]},
-{ph:"",n:9,start:"2026-12-07",dates:"7 – 13 déc",note:"Premier gel depuis l'été, sur la sortie longue.",s:[
-  E('Mar 8 déc',7),
-  Q('Ven 11 déc','Fractionné','Fractionné 4 × 1 km',"7'10\"/km",63,8,[['Fast / Recover (×4)',"Fast 1 km à 7'10\"/km · Recover 3 min à 8'30\""]]),
-  L('Dim 13 déc',14,"1 gel au km 7, avec de l'eau.")]},
-{ph:"",n:10,start:"2026-12-14",dates:"14 – 20 déc",note:"",s:[
-  E('Mar 15 déc',7),
-  Q('Ven 18 déc','Tempo','Tempo 20 min',"7'35\"/km",66,8,[['Steady — tempo',"20 min à 7'35\"/km (~2,6 km)"]]),
-  L('Dim 20 déc',15,"1 gel au km 7.")]},
-{ph:"",n:11,start:"2026-12-21",dates:"21 – 27 déc",light:1,note:"Semaine de Noël allégée. Les séances peuvent glisser d'un jour selon les fêtes.",s:[
-  E('Mar 22 déc',6),E('Ven 25 déc',5,"Jour de Noël : à faire jeudi 24 ou samedi 26 si c'est plus simple."),L('Dim 27 déc',12)]},
-{ph:"",n:12,start:"2026-12-28",dates:"28 déc – 3 janv",note:"",s:[
-  E('Mar 29 déc',7),S('Ven 1 janv',7,4,"Jour de l'an : à décaler au samedi 2 si besoin."),L('Dim 3 janv',16,"2 gels : km 7 et km 13.")]},
-{ph:"Phase 3 · Spécifique semi",n:13,start:"2027-01-04",dates:"4 – 10 janv",note:"Semaine du test. Mardi très facile pour arriver frais vendredi.",s:[
-  E('Mar 5 janv',6),
-  {day:'Ven 8 janv',tag:'Test',q:1,title:'Test 10 km',pace:'effort soutenu et régulier',dur:'~1 h 10',dist:'10 km',total:'~1 h 35',
+{ph:"Phase 1 · Refaire la base",n:1,start:"2026-11-23",dates:"23 – 29 nov",note:"Que du facile, à 8'30\"/km : plus lent que samedi, c'est voulu. Le but est de pouvoir parler en courant.",s:[
+  E('Mar 24 nov',4),E('Ven 27 nov',5),L('Dim 29 nov',7)]},
+{ph:"",n:2,start:"2026-11-30",dates:"30 nov – 6 déc",note:"Trois sorties par semaine, c'est le vrai défi de ces premières semaines. Courbatures diffuses : on ralentit, on ne saute pas.",s:[
+  E('Mar 1 déc',5),S('Ven 4 déc',5,4),L('Dim 6 déc',8)]},
+{ph:"",n:3,start:"2026-12-07",dates:"7 – 13 déc",note:"Premier fartlek : des petites relances sans pression.",s:[
+  E('Mar 8 déc',5),
+  Q('Ven 11 déc','Fartlek','Fartlek 6 × 1 min',"7'30\"/km, rec. 8'30\"",50,6,[['Fast / Recover (×6)',"Fast 1 min à 7'30\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 13 déc',9)]},
+{ph:"",n:4,start:"2026-12-14",dates:"14 – 20 déc",note:"Le tempo arrive : un effort soutenu mais contrôlé.",s:[
+  E('Mar 15 déc',6),
+  Q('Ven 18 déc','Tempo','Tempo 2 × 8 min',"7'45\"/km",52,6,[['Steady (×2)',"8 min à 7'45\"/km · Recover 2 min à 8'30\""]]),
+  L('Dim 20 déc',10)]},
+{ph:"",n:5,start:"2026-12-21",dates:"21 – 27 déc",light:1,note:"Semaine de Noël allégée. Les séances peuvent glisser d'un jour selon les fêtes.",s:[
+  E('Mar 22 déc',5),E('Ven 25 déc',5,"Jour de Noël : à faire jeudi 24 ou samedi 26 si c'est plus simple."),L('Dim 27 déc',8)]},
+{ph:"Phase 2 · Construire l'endurance",n:6,start:"2026-12-28",dates:"28 déc – 3 janv",note:"",s:[
+  E('Mar 29 déc',6),S('Ven 1 janv',6,4,"Jour de l'an : à décaler au samedi 2 si besoin."),L('Dim 3 janv',11)]},
+{ph:"",n:7,start:"2027-01-04",dates:"4 – 10 janv",note:"Semaine du test. Mardi très facile pour arriver frais vendredi.",s:[
+  E('Mar 5 janv',5),
+  {day:'Ven 8 janv',tag:'Test',q:1,title:'Test 10 km',pace:'effort soutenu et régulier',dur:'~1 h 16',dist:'10 km',total:'~1 h 40',
    note:"Partir prudemment les 2 premiers km, puis tenir l'allure la plus rapide possible jusqu'au bout. Noter le chrono : il fixe l'allure semi dans le tableau.",
    wod:[WU15,['Fast — 10 km','Effort maximal soutenable, régulier'],CD10]},
-  L('Dim 10 janv',14,"1 gel au km 7.","Sortie très facile, le lendemain du test compte peu : jambes légères.")]},
-{ph:"",n:14,start:"2027-01-11",dates:"11 – 17 janv",note:"Remplacez 7'30\" par votre allure semi du tableau.",s:[
-  E('Mar 12 janv',8),
-  Q('Ven 15 janv','Allure semi','2 × 3 km à allure semi',AS+'/km',71,9,[['Steady (×2)','3 km à '+AS+'/km · Recover 3 min à 8\'30"']]),
-  L('Dim 17 janv',17,"2 gels : km 7 et km 13.")]},
-{ph:"",n:15,start:"2027-01-18",dates:"18 – 24 janv",note:"Semaine la plus chargée du plan.",s:[
-  E('Mar 19 janv',8),
-  Q('Ven 22 janv','Fractionné','Fractionné 5 × 1 km',"allure semi − 20 s (~7'10\")",70,9,[['Fast / Recover (×5)',"Fast 1 km à ~7'10\"/km · Recover 2 min à 8'30\""]]),
-  L('Dim 24 janv',19,"2 gels : km 7 et km 14. Tenue, chaussures et petit-déjeuner du jour J.","La plus longue sortie du plan. Répétition générale.")]},
-{ph:"",n:16,start:"2027-01-25",dates:"25 – 31 janv",note:"",s:[
-  E('Mar 26 janv',8),
-  Q('Ven 29 janv','Tempo','Tempo 25 min',"allure semi − 10 s (~7'20\")",64,8,[['Steady — tempo',"25 min à ~7'20\"/km (~3,4 km)"]]),
-  {day:'Dim 31 janv',tag:'Longue',title:'Longue avec fin à allure semi',pace:"8'30\" puis "+AS,dur:'2 h 10',dist:'16 km',total:'~2 h 30',
-   gel:"2 gels : km 7 et km 13.",note:"Les 6 derniers km à allure semi, sur des jambes déjà fatiguées : c'est la sensation de la fin de course.",
-   wod:[WU10,['Slow — 10 km',"85 min · 8'30\"/km"],['Steady — 6 km','45 min · '+AS+'/km'],CD10]}]},
-{ph:"Phase 4 · Affûtage et course",n:17,start:"2027-02-01",dates:"1 – 7 févr",note:"Le volume baisse, l'allure semi reste.",s:[
-  E('Mar 2 févr',7),
-  Q('Ven 5 févr','Allure semi','3 × 2 km à allure semi',AS+'/km',54,7,[['Steady (×3)','2 km à '+AS+'/km · Recover 2 min à 8\'30"']]),
-  L('Dim 7 févr',12)]},
-{ph:"",n:18,start:"2027-02-08",dates:"8 – 14 févr",race:1,note:"Jambes fraîches. Voyage vers Barcelone en fin de semaine.",s:[
+  L('Dim 10 janv',11,null,"Deux jours après le test : très facile, marcher une minute si besoin.")]},
+{ph:"Phase 3 · Spécifique semi",n:8,start:"2027-01-11",dates:"11 – 17 janv",note:"Remplacez 7'55\" par votre allure semi du tableau.",s:[
+  E('Mar 12 janv',6),
+  Q('Ven 15 janv','Allure semi','2 × 2 km à allure semi',AS+'/km',60,7,[['Steady (×2)','2 km à '+AS+'/km · Recover 3 min à 8\'30"']]),
+  L('Dim 17 janv',13,"1 gel au km 7, avec de l'eau. Premier test de gel.")]},
+{ph:"",n:9,start:"2027-01-18",dates:"18 – 24 janv",note:"",s:[
+  E('Mar 19 janv',7),
+  Q('Ven 22 janv','Tempo','Tempo 20 min',"allure semi − 10 s (~7'45\")",60,7,[['Steady — tempo',"20 min à ~7'45\"/km (~2,6 km)"]]),
+  L('Dim 24 janv',15,"1 gel au km 7.")]},
+{ph:"",n:10,start:"2027-01-25",dates:"25 – 31 janv",note:"Semaine la plus chargée du plan.",s:[
+  E('Mar 26 janv',7),
+  Q('Ven 29 janv','Allure semi','3 × 2 km à allure semi',AS+'/km',62,7,[['Steady (×3)','2 km à '+AS+'/km · Recover 2 min à 8\'30"']]),
+  L('Dim 31 janv',17,"2 gels : km 7 et km 13. Tenue, chaussures et petit-déjeuner du jour J.","La plus longue sortie du plan. Répétition générale.")]},
+{ph:"Phase 4 · Affûtage et course",n:11,start:"2027-02-01",dates:"1 – 7 févr",note:"Le volume baisse, l'allure semi reste.",s:[
+  E('Mar 2 févr',6),
+  Q('Ven 5 févr','Allure semi','2 × 3 km à allure semi',AS+'/km',58,7,[['Steady (×2)','3 km à '+AS+'/km · Recover 3 min à 8\'30"']]),
+  L('Dim 7 févr',11)]},
+{ph:"",n:12,start:"2027-02-08",dates:"8 – 14 févr",race:1,note:"Jambes fraîches. Voyage vers Barcelone en fin de semaine.",s:[
   Q('Mar 9 févr','Allure semi','3 × 1 km à allure semi',AS+'/km',48,6,[['Steady (×3)','1 km à '+AS+'/km · Recover 2 min à 8\'30"']]),
   S('Ven 12 févr',3,3,"Courte, avant le voyage si possible."),
   {day:'Sam 13 févr',tag:'Veille',title:'Trot ou marche 15 min',pace:'très facile',dur:'15 min',dist:'~1,5 km',total:'15 min',
    note:"Retirer le dossard, préparer gels, tenue, épingles. Repas simple et connu.",wod:[['Walk / Slow','15 min très facile']]},
-  {day:'Dim 14 févr',tag:'Course',r:1,title:'Mitja Marató de Barcelona',pace:AS+'/km (ou allure du test)',dur:'~2 h 38',dist:'21,1 km',total:'selon le test du 8 janvier',
+  {day:'Dim 14 févr',tag:'Course',r:1,title:'Mitja Marató de Barcelona',pace:AS+'/km (ou allure du test)',dur:'~2 h 47',dist:'21,1 km',total:'selon le test du 8 janvier',
    gel:"2 gels : km 7 et km 14. De l'eau à chaque ravitaillement. Rien de nouveau ce jour-là.",
    note:"Départ dans la foule : les 3 premiers km 10–15 s plus lents que l'allure semi. On accélère seulement après le km 16, si les jambes le permettent.",
    wod:[['Warm up','10 min marche dynamique + 3 min trot léger'],['Slow (km 1–3)','Allure semi + 10–15 s/km'],['Steady (km 3–16)','Allure semi'],['Fast (km 16–21)','Selon sensations : tenir ou accélérer'],['Cool down',"Marche après l'arrivée"]]}]}
@@ -293,7 +270,7 @@ var plan=document.getElementById('plan');
 weeks.forEach(function(w,i){
   if(w.ph){var p=document.createElement('div');p.className='phase';p.textContent=w.ph;plan.appendChild(p);}
   var d=document.createElement('details');d.className='week';if(i===openIdx)d.open=true;
-  var label=w.label?w.label:w.race?'Semaine 18 · course':'Semaine '+w.n+(w.light?' · allégée':'');
+  var label=w.label?w.label:w.race?'Semaine '+w.n+' · course':'Semaine '+w.n+(w.light?' · allégée':'');
   var done=w.s.filter(function(s){return saved[s.id];}).length;
   var sum=document.createElement('summary');
   sum.innerHTML='<span class="wname">'+label+'</span>'+(i===openIdx?'<span class="now">en cours</span>':'')+'<span class="wmeta">'+w.dates+' · '+String(wkm(w)).replace('.',',')+' km</span><span class="wcount">'+done+'/'+w.s.length+'</span>';
